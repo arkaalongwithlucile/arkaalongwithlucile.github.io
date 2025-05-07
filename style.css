@@ -1,0 +1,405 @@
+:root {
+    --primary-color: #48639C; /* A nice blue */
+    --secondary-color: #2c3e50; /* Dark blue/grey */
+    --secondary-color-rgb: 44, 62, 80; /* ADDED: RGB for secondary color */
+    --accent-color: #e74c3c; /* A contrasting red */
+    --light-color: #ecf0f1;
+    --dark-color: #1e272e;
+    --text-color: #333;
+    --section-padding: 60px 20px;
+    --card-bg: #ffffff;
+    --card-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--light-color);
+    overflow-x: hidden; /* Prevent horizontal scroll from AOS */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- Navigation --- */
+nav {
+    /* background-color: var(--secondary-color); OLD */
+    background-color: rgba(var(--secondary-color-rgb), 0.8); /* UPDATED for transparency */
+    color: var(--light-color);
+    padding: 0.8rem 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    /* opacity: 0.8; REMOVED: Replaced by transparent background-color */
+}
+
+nav .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav .logo img {
+    height: 45px; /* Adjust as needed */
+    width: auto;
+    vertical-align: middle;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: var(--light-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: var(--primary-color);
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    color: var(--light-color);
+    cursor: pointer;
+}
+
+/* --- Hero Section --- */
+#hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.829), rgba(0, 0, 0, 0.788)), url('img3.jpg') no-repeat center center/cover;
+    color: var(--light-color);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: var(--section-padding);
+    padding-top: 80px; /* Account for fixed nav */
+}
+
+#hero h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3.5rem;
+    margin-bottom: 10px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+#hero h1 span {
+    color: var(--primary-color);
+}
+
+#hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    max-width: 700px;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: var(--light-color) !important;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.cta-button:hover {
+    background-color: #2980b9; /* Darker blue */
+}
+.cta-button i {
+    margin-right: 8px;
+}
+
+/* --- Section Styling --- */
+section {
+    padding: var(--section-padding);
+}
+section:nth-child(even) {
+    background-color: #fdfdfd;
+}
+ section:nth-child(odd):not(#hero) {
+     background-color: var(--light-color);
+ }
+
+
+.section-title {
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: var(--secondary-color);
+    position: relative;
+}
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: var(--primary-color);
+    margin: 10px auto 0;
+}
+
+/* --- About Section --- */
+#about .about-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    align-items: center;
+}
+#about .about-text {
+    flex: 1;
+    min-width: 300px;
+    font-size: 1.1rem;
+}
+#about .about-text p {
+    margin-bottom: 15px;
+}
+#about .about-image {
+    flex: 1;
+    min-width: 300px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+#about .about-image img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: var(--card-shadow);
+}
+
+/* --- Portfolio Grid --- */
+ .subsection-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.8rem;
+    color: var(--secondary-color);
+    margin-top: 50px;
+    margin-bottom: 25px;
+    text-align: left;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--primary-color);
+}
+.subsection-title:first-of-type {
+    margin-top: 0;
+}
+.subsection-title i {
+    margin-right: 10px;
+    color: var(--primary-color);
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.portfolio-item {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    box-shadow: var(--card-shadow);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.portfolio-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+
+.video-responsive {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 Aspect Ratio */
+}
+
+.video-responsive iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.portfolio-item-content {
+    padding: 20px;
+    flex-grow: 1;
+}
+
+.portfolio-item-content h3 {
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 10px;
+    color: var(--secondary-color);
+}
+.portfolio-item-content p {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 15px;
+}
+.portfolio-item-content .tags {
+    font-size: 0.8rem;
+    color: var(--primary-color);
+}
+.portfolio-item-content .tags i {
+    margin-right: 5px;
+}
+
+
+/* --- Contact Section --- */
+#contact p.contact-intro {
+    text-align: center;
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+}
+.contact-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+.social-links {
+    text-align: center;
+    margin-top: 20px;
+}
+.social-links a {
+    color: var(--secondary-color);
+    font-size: 2rem;
+    margin: 0 15px;
+    transition: color 0.3s ease;
+}
+.social-links a:hover {
+    color: var(--primary-color);
+}
+
+
+/* --- Footer --- */
+footer {
+    background-color: var(--secondary-color);
+    color: var(--light-color);
+    text-align: center;
+    padding: 20px 0;
+    font-size: 0.9rem;
+}
+
+/* --- Utility Buttons --- */
+#backToTop {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    z-index: 999;
+    transition: background-color 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+}
+#backToTop:hover {
+    background-color: #2980b9;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    nav ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: var(--secondary-color); /* Solid background for dropdown */
+        position: absolute;
+        /* top: 61px; OLD VALUE */
+        top: 100%; /* UPDATED: Position below the navbar relative to nav height */
+        left: 0;
+        padding: 10px 0;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Optional: add shadow to dropdown */
+    }
+    nav ul.active {
+        display: flex;
+    }
+    nav ul li {
+        margin: 10px 0;
+        text-align: center;
+    }
+    .menu-toggle {
+        display: block;
+    }
+
+    #hero h1 {
+        font-size: 2.5rem;
+    }
+    #hero p {
+        font-size: 1rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+     .subsection-title {
+        font-size: 1.5rem;
+    }
+
+    #about .about-content {
+        flex-direction: column;
+    }
+    #about .about-image {
+        margin-top: 30px;
+        order: -1;
+    }
+
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .contact-buttons .cta-button {
+        width: 100%;
+        max-width: 300px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
