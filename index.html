@@ -33,7 +33,7 @@
       "description": "Arka is a versatile musician, composer, and music producer, known for his collaborations with Lucille, work in bands like Gulmo and Anwesha and the Alternates, and background scores for OTT, films, and TV serials.",
       "url": "https://arkaalongwithLucile.github.io/",
       "logo": "https://arkaalongwithlucile.github.io/logo.png",
-      "image": "https://arkaalongwithlucile.github.io/img2.jpg", /* UPDATED from img1.jpg */
+      "image": "https://arkaalongwithlucile.github.io/img2.jpg",
       "email": "mailto:arkagnrdas@gmail.com",
       "sameAs": [
          "https://www.facebook.com/profile.php?id=100064363681569",
@@ -75,10 +75,11 @@
 <body>
 
     <!-- Navigation -->
-    <nav>
+    <nav id="navbar"> <!-- ADDED id="navbar" for JS targeting -->
         <div class="container">
             <a href="#hero" class="logo"><img src="logo.png" alt="Arka & Lucille Logo"></a>
-            <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu">
+            <!-- UPDATED: Added ARIA attributes for better accessibility -->
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu" aria-controls="navLinks" aria-expanded="false">
                 <i class="fas fa-bars"></i>
             </button>
             <ul id="navLinks">
@@ -92,11 +93,15 @@
 
     <!-- Hero Section -->
     <section id="hero">
-        <div data-aos="fade-up">
+        <div class="hero-content" data-aos="fade-up"> <!-- ADDED wrapper div -->
             <h1>Arka <span>Along with Lucille</span></h1>
             <p>Versatile Musician, Composer & Arranger creating captivating soundscapes for Film, TV, Web, and Independent Music.</p>
             <a href="#portfolio" class="cta-button"><i class="fas fa-play-circle"></i> View My Work</a>
         </div>
+        <!-- ADDED: Scroll down indicator for better UX -->
+        <a href="#about" class="scroll-down-indicator" aria-label="Scroll down to about section">
+            <i class="fas fa-chevron-down"></i>
+        </a>
     </section>
 
     <!-- About Section -->
@@ -105,8 +110,8 @@
             <h2 class="section-title" data-aos="fade-up">About Arka</h2>
             <div class="about-content">
                 <div class="about-text" data-aos="fade-right" data-aos-delay="200">
-                    <p>Arka is a dynamic musician, composer, and arranger with a passion for diverse musical expressions. Often collaborating with the talented contemporary artists, bringing a unique depth to the projects.</p>
-                    <p>A prominent figure in the music scene, Arka is an integral part of acclaimed bands like <strong>"Gulmo"</strong> and <strong>"Anwesha and the Alternates"</strong>. His collaborative spirit extends to various other artists and projects, showcasing his versatility.</p>
+                    <p>Arka served 7 years to one of the dynamic rock bands in bengal rock scene <strong>Crazy Petals</strong>. He played guitar and bass guitar for multiple TV and radio stations including <strong>DD national, Zee Bangla , Akash Aath, R Plus</strong> and more.</p>
+                    <p>A prominent figure in the music scene, Arka is an integral part of acclaimed bands like <strong>Gulmo</strong> and <strong>Anwesha and the Alternates</strong>. His collaborative spirit extends to various other artists and projects, showcasing his versatility.</p>
                     <p>With a keen ear for emotive storytelling through music, Arka has composed and produced background scores (BGM) for OTT releases, feature films, and television serials. His expertise also includes crafting memorable commercial arrangements and exploring innovative sounds through experimental projects and covers.</p>
                 </div>
                 <div class="about-image" data-aos="fade-left" data-aos-delay="200">
@@ -179,6 +184,40 @@
                 </div>
             </div>
 
+            <h3 class="subsection-title" data-aos="fade-up" data-aos-delay="100"><i class="fas fa-bullhorn"></i> Originals</h3>
+            <div class="portfolio-grid">
+                <div class="portfolio-item" data-aos="fade-up">
+                    <div class="video-responsive">
+                        <iframe loading="lazy" src="https://www.youtube.com/embed/-TJWWvtKN5c" title="Kings N' Riots" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="portfolio-item-content">
+                        <h3>Original Composition</h3>
+                        <p>Blues arrangement and performance</p>
+                        <span class="tags"><i class="fas fa-tag"></i> Original, Arrangement, Blues</span>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="video-responsive">
+                        <iframe loading="lazy" src="https://www.youtube.com/embed/JvXMldxY1M8" title="Chuti - Gulmo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="portfolio-item-content">
+                        <h3>Original Composition</h3>
+                        <p>Gulmo original music arrangement.</p>
+                        <span class="tags"><i class="fas fa-tag"></i> Original, Arrangement, Progressive Rock</span>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="video-responsive">
+                        <iframe loading="lazy" src="https://www.youtube.com/embed/q90oJ3UzogA?list=RDq90oJ3UzogA" title="Paltu Da - Suvankar" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="portfolio-item-content">
+                        <h3>Original Composition</h3>
+                        <p>Contemporary music arrangement.</p>
+                        <span class="tags"><i class="fas fa-tag"></i> Original, Arrangement, Pop</span>
+                    </div>
+                </div>
+            </div>
+
             <h3 class="subsection-title" data-aos="fade-up" data-aos-delay="100"><i class="fas fa-flask"></i> Experimental & Covers</h3>
             <div class="portfolio-grid">
                 <div class="portfolio-item" data-aos="fade-up">
@@ -201,16 +240,7 @@
                         <span class="tags"><i class="fas fa-tag"></i> Experimental, Cover, Sound Design</span>
                     </div>
                 </div>
-                <div class="portfolio-item" data-aos="fade-up" data-aos-delay="200">
-                    <div class="video-responsive">
-                        <iframe loading="lazy" src="https://www.youtube.com/embed/-TJWWvtKN5c" title="Experimental/Cover 3" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                    <div class="portfolio-item-content">
-                        <h3>Experimental/Cover</h3>
-                        <p>Another innovative arrangement or cover performance.</p>
-                        <span class="tags"><i class="fas fa-tag"></i> Experimental, Cover, Music Production</span>
-                    </div>
-                </div>
+                
             </div>
         </div>
     </section>
@@ -223,7 +253,7 @@
                 Interested in collaborating or have a project in mind? Let's connect!
             </p>
             <div class="contact-buttons" data-aos="fade-up" data-aos-delay="200">
-                 <a href="https://wa.me/918293656130?text=Hello%20Arka," target="_blank" class="cta-button" style="background-color: #25D366;"> <!-- UPDATED WhatsApp button color -->
+                 <a href="https://wa.me/918293656130?text=Hello%20Arka," target="_blank" rel="noopener noreferrer" class="cta-button" style="background-color: #25D366;"> <!-- UPDATED: Added rel attribute -->
                     <i class="fab fa-whatsapp"></i> Chat on WhatsApp
                 </a>
                 <a href="mailto:arkagnrdas@gmail.com?subject=Music%20Inquiry%20from%20Website&body=Hello%20Arka%2C%0A%0A%0A%0A" class="cta-button" style="background-color: var(--accent-color);">
@@ -231,9 +261,9 @@
                 </a>
             </div>
             <div class="social-links" data-aos="fade-up" data-aos-delay="300">
-                 <a href="https://www.youtube.com/@ArkaalongwithLucille" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube"></i></a> <!-- UPDATED rel attribute -->
-                 <a href="https://www.facebook.com/profile.php?id=100064363681569" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a> <!-- UPDATED rel attribute -->
-                 <a href="https://www.instagram.com/arka_along_with_Lucille/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a> <!-- UPDATED rel attribute -->
+                 <a href="https://www.youtube.com/@ArkaalongwithLucille" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                 <a href="https://www.facebook.com/profile.php?id=100064363681569" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                 <a href="https://www.instagram.com/arka_along_with_Lucille/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
             </div>
         </div>
     </section>
@@ -241,7 +271,7 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>© <span id="currentYear"></span> Arka Along with Lucille. All Rights Reserved.</p>
+            <p>© <span id="currentYear"></span> Arka Along with Lucille. Designed by <a href="http://dmukherjeetextiles.github.io/" target="_blank" rel="noopener noreferrer">Debrup</a>.</p> <!-- UPDATED: Added rel attribute -->
         </div>
     </footer>
 

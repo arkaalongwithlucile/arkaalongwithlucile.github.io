@@ -1,7 +1,7 @@
 :root {
     --primary-color: #48639C; /* A nice blue */
     --secondary-color: #2c3e50; /* Dark blue/grey */
-    --secondary-color-rgb: 44, 62, 80; /* ADDED: RGB for secondary color */
+    --secondary-color-rgb: 44, 62, 80;
     --accent-color: #e74c3c; /* A contrasting red */
     --light-color: #ecf0f1;
     --dark-color: #1e272e;
@@ -37,18 +37,28 @@ body {
 
 /* --- Navigation --- */
 nav {
-    /* background-color: var(--secondary-color); OLD */
-    background-color: rgba(var(--secondary-color-rgb), 0.8); /* UPDATED for transparency */
+    /* UPDATED: for transparent "frosted glass" effect and smooth transition */
+    background-color: rgba(var(--secondary-color-rgb), 0.5); 
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); /* For Safari */
     color: var(--light-color);
-    padding: 0.8rem 0;
+    padding: 1rem 0; /* Increased padding slightly for initial state */
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 1000;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    /* opacity: 0.8; REMOVED: Replaced by transparent background-color */
+    transition: background-color 0.4s ease, padding 0.4s ease; /* ADDED transition */
 }
+
+/* ADDED: Scrolled state for the navbar */
+nav.nav-scrolled {
+    background-color: var(--secondary-color);
+    padding: 0.8rem 0;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+}
+
 
 nav .container {
     display: flex;
@@ -57,7 +67,7 @@ nav .container {
 }
 
 nav .logo img {
-    height: 45px; /* Adjust as needed */
+    height: 45px;
     width: auto;
     vertical-align: middle;
 }
@@ -93,7 +103,7 @@ nav ul li a:hover {
 
 /* --- Hero Section --- */
 #hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.829), rgba(0, 0, 0, 0.788)), url('img3.jpg') no-repeat center center/cover;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.6)), url('img3.jpg') no-repeat center center/cover;
     color: var(--light-color);
     min-height: 100vh;
     display: flex;
@@ -103,6 +113,7 @@ nav ul li a:hover {
     text-align: center;
     padding: var(--section-padding);
     padding-top: 80px; /* Account for fixed nav */
+    position: relative; /* ADDED for scroll indicator positioning */
 }
 
 #hero h1 {
@@ -130,17 +141,46 @@ nav ul li a:hover {
     text-decoration: none;
     border-radius: 5px;
     font-weight: 600;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* UPDATED */
     border: none;
     cursor: pointer;
 }
 
 .cta-button:hover {
-    background-color: #2980b9; /* Darker blue */
+    background-color: #34495e; /* Darker blue */
+    transform: scale(1.05); /* UPDATED */
 }
 .cta-button i {
     margin-right: 8px;
 }
+
+/* ADDED: Scroll down indicator styles */
+.scroll-down-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--light-color);
+    font-size: 1.5rem;
+    animation: bounce 2s infinite;
+    opacity: 0.7;
+}
+.scroll-down-indicator:hover {
+    opacity: 1;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translate(-50%, 0);
+    }
+    40% {
+        transform: translate(-50%, -15px);
+    }
+    60% {
+        transform: translate(-50%, -7px);
+    }
+}
+
 
 /* --- Section Styling --- */
 section {
@@ -301,10 +341,11 @@ section:nth-child(even) {
     color: var(--secondary-color);
     font-size: 2rem;
     margin: 0 15px;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, transform 0.3s ease; /* UPDATED */
 }
 .social-links a:hover {
     color: var(--primary-color);
+    transform: scale(1.1); /* UPDATED */
 }
 
 
@@ -315,6 +356,17 @@ footer {
     text-align: center;
     padding: 20px 0;
     font-size: 0.9rem;
+}
+/* ADDED professional touch for footer link */
+footer a {
+    color: var(--light-color);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--light-color);
+    transition: color 0.3s ease, border-bottom-color 0.3s ease;
+}
+footer a:hover {
+    color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
 }
 
 /* --- Utility Buttons --- */
@@ -338,7 +390,7 @@ footer {
     transition: background-color 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
 }
 #backToTop:hover {
-    background-color: #2980b9;
+    background-color: #34495e; /* Darker blue */
 }
 
 /* --- Responsive Design --- */
@@ -347,13 +399,13 @@ footer {
         display: none;
         flex-direction: column;
         width: 100%;
-        background-color: var(--secondary-color); /* Solid background for dropdown */
+        /* UPDATED: Solid bg for mobile menu, matches scrolled state */
+        background-color: var(--secondary-color);
         position: absolute;
-        /* top: 61px; OLD VALUE */
-        top: 100%; /* UPDATED: Position below the navbar relative to nav height */
+        top: 100%; /* Positions below the navbar */
         left: 0;
         padding: 10px 0;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Optional: add shadow to dropdown */
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     }
     nav ul.active {
         display: flex;
@@ -371,6 +423,10 @@ footer {
     }
     #hero p {
         font-size: 1rem;
+    }
+    /* ADDED: Hide scroll indicator on smaller screens if desired, or keep it */
+    .scroll-down-indicator {
+        bottom: 15px;
     }
 
     .section-title {

@@ -1,9 +1,20 @@
-// This script can also be deferred or placed at the end of body
 document.addEventListener('DOMContentLoaded', () => {
     AOS.init({
-        duration: 1000, // values from 0 to 3000, with step 50ms
-        once: true, // whether animation should happen only once - while scrolling down
+        duration: 1000,
+        once: true,
     });
+
+    // ADDED: Navbar Scroll Effect
+    const navbar = document.getElementById('navbar');
+    if (navbar) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('nav-scrolled');
+            } else {
+                navbar.classList.remove('nav-scrolled');
+            }
+        });
+    }
 
     // Mobile Menu Toggle
     const menuToggle = document.getElementById('menuToggle');
@@ -12,7 +23,12 @@ document.addEventListener('DOMContentLoaded', () => {
         menuToggle.addEventListener('click', () => {
             navLinks.classList.toggle('active');
             const icon = menuToggle.querySelector('i');
-            if (navLinks.classList.contains('active')) {
+            
+            // UPDATED: Toggle ARIA attribute and icon for accessibility
+            const isExpanded = navLinks.classList.contains('active');
+            menuToggle.setAttribute('aria-expanded', isExpanded);
+
+            if (isExpanded) {
                 icon.classList.remove('fa-bars');
                 icon.classList.add('fa-times');
             } else {
@@ -21,12 +37,14 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
+        // Close menu when a link is clicked
         document.querySelectorAll('#navLinks a').forEach(link => {
             link.addEventListener('click', () => {
                 if (navLinks.classList.contains('active')) {
                     navLinks.classList.remove('active');
                     menuToggle.querySelector('i').classList.remove('fa-times');
                     menuToggle.querySelector('i').classList.add('fa-bars');
+                    menuToggle.setAttribute('aria-expanded', 'false'); // ADDED
                 }
             });
         });
